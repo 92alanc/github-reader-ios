@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct RepositoryDetailsView: View {
-    let repository: RepositoryResponse
+    let repository: UIRepository
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -31,7 +31,7 @@ struct RepositoryDetailsView: View {
 struct RepositoryDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         RepositoryDetailsView(
-            repository: RepositoryResponse(
+            repository: UIRepository(
                 id: 1,
                 name: "Carcadas Alborghetti",
                 description: nil,

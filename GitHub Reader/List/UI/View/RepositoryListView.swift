@@ -1,7 +1,13 @@
 import SwiftUI
 
 struct RepositoryListView: View {
-    @ObservedObject var viewModel = RepositoryListViewModel()
+    @ObservedObject var viewModel = RepositoryListViewModel(
+        getRepositoriesUseCase: GetRepositoriesUseCaseImpl(
+            repository: RepositoryRepositoryImpl(
+                remoteDataSource: RepositoryRemoteDataSourceImpl()
+            )
+        )
+    )
     
     var body: some View {
         NavigationView {
