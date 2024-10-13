@@ -6,7 +6,7 @@ struct RepositoryListView: View {
     var body: some View {
         NavigationView {
             List(viewModel.repositories) { repository in
-                NavigationLink(destination: RepositoryDetailView(repository: repository)) {
+                NavigationLink(destination: RepositoryDetailsView(repository: repository)) {
                     VStack(alignment: .leading) {
                         Text(repository.name)
                             .font(.headline)

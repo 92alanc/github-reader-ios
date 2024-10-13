@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct GitHub_ReaderApp: App {
+struct GitHubReaderApp: App {
     var body: some Scene {
         WindowGroup {
             RepositoryListView()

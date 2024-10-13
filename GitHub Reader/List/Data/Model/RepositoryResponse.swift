@@ -1,4 +1,4 @@
-struct Repository: Identifiable, Codable {
+struct RepositoryResponse: Identifiable, Codable {
     let id: Int
     let name: String
     let description: String?
