@@ -1,0 +1,50 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "no_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No description"
+          }
+        }
+      }
+    },
+    "repository_list_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repositories"
+          }
+        }
+      }
+    },
+    "star_count_format" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stars: %d"
+          }
+        }
+      }
+    },
+    "view_on_github" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View on GitHub"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
