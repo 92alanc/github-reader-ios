@@ -11,11 +11,11 @@ struct RepositoryDetailsView: View {
             }
             
             HStack {
-                Text(verbatim: .starCountFormat(repository.stargazers_count))
+                Text(verbatim: .starCountFormat(repository.starCount))
                 Spacer()
                 Link(
                     String.viewOnGitHub,
-                    destination: URL(string: repository.html_url)!
+                    destination: URL(string: repository.url)!
                 )
                 .foregroundColor(.blue)
             }
@@ -35,8 +35,8 @@ struct RepositoryDetailsView_Previews: PreviewProvider {
                 id: 1,
                 name: "Carcadas Alborghetti",
                 description: nil,
-                html_url: "https://test.com",
-                stargazers_count: 3
+                url: "https://test.com",
+                starCount: 3
             )
         )
     }
