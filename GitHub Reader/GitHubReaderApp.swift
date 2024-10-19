@@ -4,7 +4,8 @@ import SwiftUI
 struct GitHubReaderApp: App {
     var body: some Scene {
         WindowGroup {
-            RepositoryListView()
+            let viewModel = Dependencies.repositoryListViewModel()
+            RepositoryListView(viewModel: viewModel)
         }
     }
 }
