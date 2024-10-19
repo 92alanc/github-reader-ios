@@ -2,10 +2,13 @@ import SwiftUI
 
 @main
 struct GitHubReaderApp: App {
+    init() {
+        setUpDIContainer()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            let viewModel = Dependencies.repositoryListViewModel()
-            RepositoryListView(viewModel: viewModel)
+            RepositoryListView(viewModel: container.resolve(RepositoryListViewModel.self)!)
         }
     }
 }

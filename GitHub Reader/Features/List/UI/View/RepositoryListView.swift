@@ -35,7 +35,7 @@ struct RepositoryListView: View {
 struct RepositoryListView_Previews: PreviewProvider {
     static var previews: some View {
         RepositoryListView(
-            viewModel: Dependencies.repositoryListViewModel()
+            viewModel: container.resolve(RepositoryListViewModel.self)!
         )
     }
 }

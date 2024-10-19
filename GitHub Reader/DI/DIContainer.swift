@@ -1,32 +1,39 @@
-struct Dependencies {
+import Swinject
+
+let container = Container()
+
+func setUpDIContainer() {
+    container.register(Logger.self) { _ in
+        LoggerImpl()
+    }
     
-    static func repositoryRemoteDataSource() -> RepositoryRemoteDataSource {
-        return RepositoryRemoteDataSourceImpl(
-            baseURLProvider: baseURLProvider(),
-            logger: logger()
+    container.register(BaseURLProvider.self) { _ in
+        BaseURLProviderImpl()
+    }
+    
+    container.register(RepositoryRemoteDataSource.self) { resolver in
+        RepositoryRemoteDataSourceImpl(
+            baseURLProvider: resolver.resolve(BaseURLProvider.self)!,
+            logger: resolver.resolve(Logger.self)!
         )
     }
     
-    static func repositoryRepository() -> RepositoryRepository {
-        return RepositoryRepositoryImpl(remoteDataSource: repositoryRemoteDataSource())
-    }
-    
-    static func getRepositoriesUseCase() -> GetRepositoriesUseCase {
-        return GetRepositoriesUseCaseImpl(repository: repositoryRepository())
-    }
-    
-    static func repositoryListViewModel() -> RepositoryListViewModel {
-        return RepositoryListViewModel(
-            getRepositoriesUseCase: getRepositoriesUseCase(),
-            logger: logger()
+    container.register(RepositoryRepository.self) { resolver in
+        RepositoryRepositoryImpl(
+            remoteDataSource: resolver.resolve(RepositoryRemoteDataSource.self)!
         )
     }
     
-    static func logger() -> Logger {
-        return LoggerImpl()
+    container.register(GetRepositoriesUseCase.self) { resolver in
+        GetRepositoriesUseCaseImpl(
+            repository: resolver.resolve(RepositoryRepository.self)!
+        )
     }
     
-    static func baseURLProvider() -> BaseURLProvider {
-        return BaseURLProviderImpl()
+    container.register(RepositoryListViewModel.self) { resolver in
+        RepositoryListViewModel(
+            getRepositoriesUseCase: resolver.resolve(GetRepositoriesUseCase.self)!,
+            logger: resolver.resolve(Logger.self)!
+        )
     }
 }

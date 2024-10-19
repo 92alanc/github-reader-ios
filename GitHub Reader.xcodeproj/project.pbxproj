@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E7169DEE2CC44A0400DD361E /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = E7169DED2CC44A0400DD361E /* Swinject */; };
 		E7DA198B2CBB5D1500431B9D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E7DA198A2CBB5D1000431B9D /* .gitignore */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7169DEE2CC44A0400DD361E /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +120,7 @@
 			);
 			name = "GitHub Reader";
 			packageProductDependencies = (
+				E7169DED2CC44A0400DD361E /* Swinject */,
 			);
 			productName = "GitHub Reader";
 			productReference = E7A1C1512CBB23AC0064420D /* GitHub Reader.app */;
@@ -203,6 +206,7 @@
 			mainGroup = E7A1C1482CBB23AC0064420D;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				E7169DEC2CC44A0400DD361E /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E7A1C1522CBB23AC0064420D /* Products */;
@@ -566,6 +570,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E7169DEC2CC44A0400DD361E /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E7169DED2CC44A0400DD361E /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E7169DEC2CC44A0400DD361E /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E7A1C1492CBB23AC0064420D /* Project object */;
 }
