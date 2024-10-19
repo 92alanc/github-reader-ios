@@ -13,6 +13,13 @@ struct Dependencies {
     }
     
     static func repositoryListViewModel() -> RepositoryListViewModel {
-        return RepositoryListViewModel(getRepositoriesUseCase: getRepositoriesUseCase())
+        return RepositoryListViewModel(
+            getRepositoriesUseCase: getRepositoriesUseCase(),
+            logger: logger()
+        )
+    }
+    
+    static func logger() -> Logger {
+        return LoggerImpl()
     }
 }
