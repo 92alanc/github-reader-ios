@@ -1,7 +1,9 @@
 struct Dependencies {
     
     static func repositoryRemoteDataSource() -> RepositoryRemoteDataSource {
-        return RepositoryRemoteDataSourceImpl()
+        return RepositoryRemoteDataSourceImpl(
+            baseURLProvider: baseURLProvider()
+        )
     }
     
     static func repositoryRepository() -> RepositoryRepository {
@@ -21,5 +23,9 @@ struct Dependencies {
     
     static func logger() -> Logger {
         return LoggerImpl()
+    }
+    
+    static func baseURLProvider() -> BaseURLProvider {
+        return BaseURLProviderImpl()
     }
 }

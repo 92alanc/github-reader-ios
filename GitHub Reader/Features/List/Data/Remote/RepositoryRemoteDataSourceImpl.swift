@@ -3,8 +3,14 @@ import Foundation
 
 class RepositoryRemoteDataSourceImpl: RepositoryRemoteDataSource {
     
+    private let baseURLProvider: BaseURLProvider
+    
+    init(baseURLProvider: BaseURLProvider) {
+        self.baseURLProvider = baseURLProvider
+    }
+    
     func getRepositories() async throws -> [Repository] {
-        let url = URL(string: "https://api.github.com/users/92alanc/repos")!
+        let url = baseURLProvider.getBaseURL()
         let (data, response) = try await URLSession.shared.data(from: url)
         
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
