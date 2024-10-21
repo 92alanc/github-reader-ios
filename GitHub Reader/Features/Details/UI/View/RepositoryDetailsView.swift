@@ -4,7 +4,7 @@ struct RepositoryDetailsView: View {
     let repository: UIRepository
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
+        VStack(alignment: .leading, spacing: 24) {
             if let description = repository.description {
                 Text(description)
                     .font(.body)
@@ -21,6 +21,22 @@ struct RepositoryDetailsView: View {
             }
             .font(.subheadline)
             
+            HStack {
+                AsyncImage(url: repository.ownerAvatarUrl) { image in
+                    image.resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 60, height: 60)
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(Color.black, lineWidth: 2))
+                        .shadow(radius: 10)
+                } placeholder: {
+                    ProgressView()
+                }
+                .frame(width: 60, height: 60)
+                
+                Text(repository.ownerLogin)
+            }
+            
             Spacer()
         }
         .padding()
@@ -36,7 +52,9 @@ struct RepositoryDetailsView_Previews: PreviewProvider {
                 name: "Carcadas Alborghetti",
                 description: nil,
                 url: "https://test.com",
-                starCount: 3
+                starCount: 3,
+                ownerLogin: "92alanc",
+                ownerAvatarUrl: URL(string: "https://avatars.githubusercontent.com/u/33719607?v=4")!
             )
         )
     }

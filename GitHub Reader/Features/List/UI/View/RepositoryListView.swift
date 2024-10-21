@@ -9,7 +9,7 @@ struct RepositoryListView: View {
                 ProgressView()
             } else if let errorMessage = viewModel.errorMessage {
                 Text(errorMessage)
-            } else {
+            } else if (!viewModel.repositories.isEmpty) {
                 List(viewModel.repositories) { repository in
                     NavigationLink(destination: RepositoryDetailsView(repository: repository)) {
                         VStack(alignment: .leading) {

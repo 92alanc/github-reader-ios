@@ -1,3 +1,5 @@
+import Foundation
+
 extension Repository {
     func toUI() -> UIRepository {
         return UIRepository(
@@ -5,7 +7,9 @@ extension Repository {
             name: name,
             description: description,
             url: url,
-            starCount: starCount
+            starCount: starCount,
+            ownerLogin: ownerLogin,
+            ownerAvatarUrl: URL(string: ownerAvatarUrl)!
         )
     }
 }

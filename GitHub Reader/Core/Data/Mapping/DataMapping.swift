@@ -5,7 +5,9 @@ extension RepositoryResponse {
             name: name,
             description: description,
             url: url,
-            starCount: starCount
+            starCount: starCount,
+            ownerLogin: owner.login,
+            ownerAvatarUrl: owner.avatarUrl
         )
     }
 }
