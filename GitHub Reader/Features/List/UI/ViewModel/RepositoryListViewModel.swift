@@ -1,11 +1,9 @@
 import Foundation
-import Combine // Similar to Coroutines
+import Combine
 
 class RepositoryListViewModel: ObservableObject {
     
-    @Published var isLoading: Bool = false
-    @Published var repositories: [UIRepository] = []
-    @Published var errorMessage: String? = nil
+    @Published private(set) var state = RepositoryListUIState()
     
     private let getRepositoriesUseCase: GetRepositoriesUseCase
     private let logger: Logger
@@ -24,19 +22,20 @@ class RepositoryListViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .handleEvents(receiveSubscription: { [weak self] _ in
                 self?.logger.log("Loading...")
-                self?.isLoading = true
+                self?.state = (self?.state.onLoading())!
             }, receiveCompletion: { [weak self] _ in
                 self?.logger.log("Completed")
-                self?.isLoading = false
+                self?.state = (self?.state.onFinishedLoading())!
             })
             .catch { [weak self] error -> Just<[Repository]> in
                 self?.logger.log("Something went wrong", error)
-                self?.errorMessage = error.localizedDescription
+                self?.state = (self?.state.onError(errorMessage: error.localizedDescription))!
                 return Just([])
             }
             .sink { [weak self] repositories in
+                let repositories = repositories.map { $0.toUI() }
                 self?.logger.log("Fetched \(repositories.count) repositories")
-                self?.repositories = repositories.map { $0.toUI() }
+                self?.state = (self?.state.onRepositoriesReceived(repositories: repositories))!
             }
             .store(in: &cancellables)
     }

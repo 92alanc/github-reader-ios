@@ -13,8 +13,7 @@ func setUpDIContainer() {
     
     container.register(RepositoryRemoteDataSource.self) { resolver in
         RepositoryRemoteDataSourceImpl(
-            baseURLProvider: resolver.resolve(BaseURLProvider.self)!,
-            logger: resolver.resolve(Logger.self)!
+            baseURLProvider: resolver.resolve(BaseURLProvider.self)!
         )
     }
     
